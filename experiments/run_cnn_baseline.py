@@ -18,7 +18,7 @@ Reads (never writes): everything else.
 
 Usage
 -----
-  python run_cnn_baseline.py
+  python -m experiments.run_cnn_baseline
 """
 from __future__ import annotations
 
@@ -285,7 +285,7 @@ def _run_ranking_eval(cnn_path: Path, cfg: dict) -> dict:
 # ---------------------------------------------------------------------------
 
 def _run_beyond_eval(cnn_path: Path, cfg: dict) -> dict:
-    from eval_beyond_accuracy import _load_top_n, _metrics_for_lists, _train_popularity
+    from experiments.eval_beyond_accuracy import _load_top_n, _metrics_for_lists, _train_popularity
 
     feat_dir = Path(cfg["paths"]["features_dir"])
     split    = json.loads(Path(cfg["paths"]["split"]).read_text())

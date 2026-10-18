@@ -31,7 +31,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from build_candidate_ranker import (
+from training.build_candidate_ranker import (
     FOLD_DIR, FEATURE_COLS,
     _fold_splits, _check_leakage, _train_candidate_ranker,
     _score_test_candidates, _eval_retrieved, _eval_all_users, _eval_isolation,

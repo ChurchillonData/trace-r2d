@@ -26,7 +26,7 @@ import pandas as pd
 import yaml
 from tqdm import tqdm
 
-from build_candidate_ranker import _score_candidates
+from training.build_candidate_ranker import _score_candidates
 from recsys.evaluation import _hit_ndcg_mrr
 from recsys.ranking import FEATURE_COLS
 from recsys.retrieval import _prepare_retrieval, retrieve_for_user

@@ -6,7 +6,7 @@ only needed while computing item and user embeddings.  semantic.build()
 deletes the weights file automatically once embeddings are cached to disk.
 
 Usage:
-    python setup_sbert.py
+    python -m scripts.setup_sbert
 """
 
 from __future__ import annotations

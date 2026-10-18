@@ -35,7 +35,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from baseline_frame_check import _positives
+from experiments.baseline_frame_check import _positives
 
 ALIGNED = Path("ranking/candidate_scores_budget200_cand.parquet")
 OBSERVED = Path("ranking/candidate_scores_budget200.parquet")

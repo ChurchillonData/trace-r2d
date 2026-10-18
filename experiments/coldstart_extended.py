@@ -14,7 +14,7 @@ Writes only to reports/coldstart/ and reports/figures/.
 Never touches main pipeline artefacts.
 
 Usage:
-  python coldstart_extended.py
+  python -m experiments.coldstart_extended
 """
 from __future__ import annotations
 

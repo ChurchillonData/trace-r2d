@@ -1,6 +1,6 @@
 """Check that every number in the paper matches the result files in reports/.
 
-Run from the repository root: python final_check.py
+Run from the repository root: python -m scripts.final_check
 """
 
 from __future__ import annotations

@@ -21,7 +21,7 @@ Never touches:
   ranking/
 
 Usage:
-  python coldstart_experiment.py
+  python -m experiments.coldstart_experiment
 """
 from __future__ import annotations
 

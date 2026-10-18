@@ -1,8 +1,8 @@
 """
 Download Amazon Electronics reviews to data/raw.parquet.
 
-    python setup_data.py              # try real data (HuggingFace, then UCSD)
-    python setup_data.py --synthetic  # synthetic data for debug pass only
+    python -m scripts.setup_data              # try real data (HuggingFace, then UCSD)
+    python -m scripts.setup_data --synthetic  # synthetic data for debug pass only
 
 The pipeline's data stage reads data/raw.parquet and skips downloading.
 Real data is required for Pass 1 and Pass 2 dissertation results.
@@ -214,7 +214,7 @@ def main() -> None:
             print("     5. Re-run: python -m recsys.run --config configs/default.yaml")
             print()
             print("  B) Synthetic data (debug pass only, metrics are not real):")
-            print("     python setup_data.py --synthetic")
+            print("     python -m scripts.setup_data --synthetic")
             sys.exit(1)
 
     pq.write_table(pa.Table.from_pylist(rows[:N], schema=SCHEMA), str(OUT))

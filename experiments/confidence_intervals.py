@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from build_candidate_ranker import _score_candidates, _train_candidate_ranker
+from training.build_candidate_ranker import _score_candidates, _train_candidate_ranker
 from recsys.evaluation import _hit_ndcg_mrr
 from recsys.ranking import FEATURE_COLS
 

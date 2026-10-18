@@ -18,57 +18,62 @@ A two-stage recommender built on Amazon Electronics Reviews 2023. SVD, SBERT and
 
 ## Setup
 
+All commands run from the repository root.
+
 ```bash
 pip install -r requirements.txt
-python setup_data.py
-python setup_sbert.py
+python -m scripts.setup_data
+python -m scripts.setup_sbert
 ```
 
 ## Reproducing the results
 
-Run the pipeline and train the aligned ranker:
+Run the pipeline, then build the candidate pool and train the aligned ranker:
 
 ```bash
 python -m recsys.run
-python measure_budget_recall.py
-python build_candidate_ranker.py
-python fix_candidate_leakage.py
+python -m training.measure_budget_recall
+python -m training.build_candidate_ranker
+python -m training.fix_candidate_leakage
 ```
 
-Each result in the paper then has its own script:
+Each result in the paper then has its own script in `experiments/`, run as `python -m experiments.<name>`:
 
 | Result | Script |
 |---|---|
-| Main results | `final_results_table.py` |
-| Retrieval recall | `measure_recall_conditions.py` |
-| Ranker in isolation | `run_isolation_eval.py`, `recover_isolation_hr.py` |
-| Beyond-accuracy metrics | `eval_beyond_accuracy.py` |
-| Text-encoder comparison | `run_cnn_baseline.py` |
-| Cold-start | `coldstart_experiment.py`, `coldstart_extended.py` |
-| Oracle retrieval | `oracle_retrieval.py` |
-| Initialisation variance | `confidence_intervals.py` |
-| Candidate-budget ablation | `budget_ablation.py` |
-| MovieLens density check | `ml_density_check.py` |
-| Figures | `make_new_figures.py` |
+| Main results | `final_results_table` |
+| Retrieval recall | `measure_recall_conditions` |
+| Ranker in isolation | `run_isolation_eval`, `recover_isolation_hr` |
+| Beyond-accuracy metrics | `eval_beyond_accuracy` |
+| Text-encoder comparison | `run_cnn_baseline` |
+| Cold-start | `coldstart_experiment`, `coldstart_extended` |
+| Oracle retrieval | `oracle_retrieval` |
+| Initialisation variance | `confidence_intervals` |
+| Candidate-budget ablation | `budget_ablation` |
+| MovieLens density check | `ml_density_check` |
 
-Results are written to `reports/`. To check every number in the paper against them:
+Results are written to `reports/`. To draw the figures and check every number in the paper against the results:
 
 ```bash
-python final_check.py
+python -m scripts.make_new_figures
+python -m scripts.final_check
 ```
 
 ## Structure
 
 ```
-recsys/     pipeline: data, features, retrieval, ranking, evaluation
-configs/    all tunable parameters
-reports/    result files behind every reported number
-paper/      LaTeX source and figures
+recsys/        core pipeline: data, features, retrieval, ranking, evaluation
+training/      budget-union candidate pool and aligned ranker
+experiments/   one script per result in the paper
+scripts/       data setup, figures, number check
+configs/       all tunable parameters
+reports/       result files behind every reported number
+paper/         LaTeX source and figures
 ```
 
 ## Data
 
-- [Amazon Reviews 2023](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023), Electronics category, downloaded by `setup_data.py`
+- [Amazon Reviews 2023](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023), Electronics category, downloaded by `scripts/setup_data.py`
 - MovieLens 20M, used only for the density check, expected at `MovieLens/rating.csv`
 
 Neither dataset is included in this repository.
