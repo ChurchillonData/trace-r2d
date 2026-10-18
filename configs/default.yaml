@@ -1,0 +1,62 @@
+# Default configuration for the two-stage recommender.
+# Every tunable value lives here, not in code.
+
+seed: 42
+
+data:
+  source: "McAuley-Lab/Amazon-Reviews-2023"
+  category: "Electronics"
+  sample_size: 2000000             # debug pass. change to 200000 for pass one, 1000000 for pass two
+  k_core: 5                     # pass one: no filtering. set to 5 for pass two
+  min_interactions_warm: 5      # below this counts as cold start
+  test_fraction: 0.2
+  split_by: "user"              # per-user split for ranking evaluation
+
+folds:
+  n_folds: 5                    # out-of-fold feature generation
+
+features:
+  svd:
+    n_factors: 50
+  semantic:
+    model_name: "models/all-MiniLM-L6-v2"
+    pool: "mean"
+    batch_size: 8               # lowered for low-RAM machines; raise on GPU
+    encoding_chunk_size: 5000   # encode this many texts per chunk to cap peak RAM
+    cache: true                 # embed once, reuse. critical for the scaled pass
+  itemitem:
+    top_neighbours: 50
+    similarity: "cosine"
+
+retrieval:
+  candidate_set_size: 200
+  source_budgets:
+    collaborative: 0.50    # 100 slots at pool=200
+    itemitem: 0.335        # 67 slots at pool=200
+    semantic: 0.165        # 33 slots at pool=200
+  sources: ["collaborative", "semantic", "itemitem"]
+  fallback: "popularity"
+  rating_threshold: 4             # minimum rating to count as a liked item for candidate generation
+
+ranking:
+  model: "lightgbm"             # or "xgboost"
+  mode: "lambdarank"            # also runs pointwise for comparison
+  max_depth: 6
+  learning_rate: 0.1
+  early_stopping_rounds: 10
+  top_n: 10
+
+evaluation:
+  negatives_per_positive: 99
+  k_values: [1, 5, 10]
+  relevance_threshold: 5        # strict, given the positive skew
+  report_slices: ["warm", "cold"]
+
+paths:
+  clean: "data/clean.parquet"
+  split: "data/split.json"
+  cold_start: "data/cold_start.json"
+  features_dir: "features/"
+  retrieval_dir: "retrieval/"
+  ranking_dir: "ranking/"
+  reports_dir: "reports/"

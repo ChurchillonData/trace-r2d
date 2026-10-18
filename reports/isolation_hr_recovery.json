@@ -1,0 +1,21 @@
+{
+  "model": "candidate_ranker",
+  "evaluation": "isolation (catalogue negatives)",
+  "n_pairs": 118464,
+  "seed": 42,
+  "metrics": {
+    "hr@1": 0.1926,
+    "ndcg@1": 0.1926,
+    "hr@5": 0.4047,
+    "ndcg@5": 0.3031,
+    "hr@10": 0.5167,
+    "ndcg@10": 0.3392,
+    "mrr": 0.3015
+  },
+  "sanity_hr10": {
+    "expected": 0.5167,
+    "actual": 0.5167,
+    "status": "PASS"
+  },
+  "elapsed_minutes": 17.1
+}

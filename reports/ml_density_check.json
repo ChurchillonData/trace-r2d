@@ -1,0 +1,24 @@
+{
+  "dataset": "MovieLens-20M",
+  "user_subsample": 40000,
+  "ratings": 5856070,
+  "users": 40000,
+  "items": 14471,
+  "density_pct": 1.0117,
+  "relevance_threshold": 4.0,
+  "candidate_set_size": 200,
+  "slots": {
+    "svd": 100,
+    "itemitem": 67,
+    "popularity": 33
+  },
+  "semantic_excluded": true,
+  "test_positives": 583642,
+  "recall_at_200_pct": 59.02,
+  "amazon_comparison": {
+    "density_pct": 0.0234,
+    "recall_at_200_pct": 3.3
+  },
+  "density_ratio": 43.2,
+  "recall_ratio": 17.9
+}

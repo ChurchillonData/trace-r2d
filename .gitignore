@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Data and generated artifacts (recreated by running the pipeline).
+# Anchored with a leading slash so they match only at the repo root, not
+# the recsys/features/ source package.
+/data/
+/features/
+/retrieval/
+/ranking/
+/models/
+/MovieLens/
+*.parquet
+*.npy
+*.npz
+*.pkl
+
+# Run outputs
+reports/figures/
+reports/*.log
+reports/*.txt
+
+# LaTeX build files
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.pdf
+paper/*.synctex.gz
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,44 @@
+{
+  "candidate_ranker": {
+    "retrieved_only": {
+      "n_users": 3762,
+      "hr@10": 0.5695,
+      "ndcg@10": 0.336,
+      "mrr": 0.2832
+    },
+    "all_users": {
+      "hr@10": 0.0188,
+      "ndcg@10": 0.0111,
+      "mrr": 0.0142
+    },
+    "isolation": {
+      "hr@10": 0.5167,
+      "ndcg@10": 0.3392,
+      "mrr": 0.3015
+    }
+  },
+  "observed_pair_ranker_on_budget_retrieval": {
+    "retrieved_only": {
+      "hr@10": 0.1709,
+      "ndcg@10": 0.0969,
+      "mrr": 0.0954
+    },
+    "all_users": {
+      "hr@10": 0.0056,
+      "ndcg@10": 0.0032,
+      "mrr": 0.008
+    },
+    "isolation": {
+      "hr@10": 0.1701,
+      "ndcg@10": 0.0939,
+      "mrr": 0.0872
+    }
+  },
+  "leakage": {
+    "train_test_disjoint": true,
+    "no_test_in_candidates": true,
+    "no_test_labels_positive": true,
+    "fold_label_integrity": true,
+    "item_popularity_from_train_only": true
+  }
+}
