@@ -1,6 +1,8 @@
-# Retrieval or Ranking?
+# TRACE-R2D
 
-Diagnosing the dominant bottleneck in a hybrid two-stage recommender on a sparse product catalogue.
+**Two-stage Recommender Attribution via Controlled Evaluation** for retrieval-to-ranking diagnostics.
+
+Code for *Retrieval or Ranking? Diagnosing the Dominant Bottleneck in a Hybrid Two-Stage Recommender on a Sparse Product Catalogue.*
 
 <p align="center">
   <img src="paper/figures/fig_architecture_new.png" alt="System architecture" width="100%">
